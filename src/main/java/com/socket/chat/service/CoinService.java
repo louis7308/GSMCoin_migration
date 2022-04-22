@@ -11,7 +11,6 @@ import java.util.Map;
 
 @Service
 public class CoinService {
-    Map<String, String> data= new HashMap<>();
     List<Integer> list = new ArrayList<>();
 
     public List<Integer> listAdd() {
@@ -20,11 +19,7 @@ public class CoinService {
         return list;
     }
 
-    public Map<String, String> getPrice(){
-        int i=0;
-//        CoinResponseDTO coinResponseDTO = new CoinResponseDTO(1, "test@naver.com");
-//        data.put("price", coinResponseDTO);
-        data.put("price", "1");
-        return data;
+    public String AllCoin() {
+        String json =
     }
 }
