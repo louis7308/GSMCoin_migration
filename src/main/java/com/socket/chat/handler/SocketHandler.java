@@ -88,22 +88,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
     @Override
     public void afterPropertiesSet() throws Exception {
         int i=0;
-        list.add(50);
         log.info("{} 엔티티 데이터", coinData.getPrice());
-        json =  "{\"userId\":\"sim\", "
-                + "\"userPw\":\"simpw\","
-                + "\"userInfo\":{"
-                + "\"age\":\"50\""
-                + "\"price\":";
-        List<Integer> coins = coinService.listAdd();
-        for (Integer coin: coins) {
-            json+="["+"\"coin\":"+coin+"],";
-        }
-        json.substring(0,json.length()-1);
-                json+= "}"
-                + "}";
-
-
         log.info("hi2 {}",json);
         Thread thread = new Thread(){
 
@@ -111,15 +96,8 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
             public void run() {
                 while (true){
                     try {
-                        json =  "{\"userId\":\"sim\", "
-                                + "\"userPw\":\"simpw\","
-                                + "\"userInfo\":{"
-                                + "\"age\":\"50\""
-                                + "\"price\":"+ coinService.listAdd()
-                        + "}"
-                                + "}";
-                        log.info("ttttt {}",json);
-                        broadcast("hi" + json);
+                        log.info("ttttt {}",coinService.AllCoin());
+                        broadcast(json);
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();

@@ -11,6 +11,8 @@ import java.util.Map;
 
 @Service
 public class CoinService {
+
+    private final
     List<Integer> list = new ArrayList<>();
 
     public List<Integer> listAdd() {
@@ -20,6 +22,13 @@ public class CoinService {
     }
 
     public String AllCoin() {
-        String json =
+        String json =  "{\"userId\":\"sim\", "
+                + "\"userPw\":\"simpw\","
+                + "\"userInfo\":{"
+                + "\"age\":\"50\","
+                + "\"price\":"+ this.listAdd()
+                + "}"
+                + "}";
+        return json;
     }
 }

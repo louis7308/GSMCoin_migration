@@ -1,5 +1,6 @@
 package com.socket.chat.config;
 
+import com.socket.chat.handler.SideSocketHandler;
 import com.socket.chat.handler.SocketHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +15,12 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 public class SocketConfiguration implements WebSocketConfigurer {
 
     private final SocketHandler socketHandler;
+    private final SideSocketHandler sideSocketHandler;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(socketHandler, "ws/chat")
+                .addHandler(sideSocketHandler, "ws/cha")
                 .addInterceptors(new HttpSessionHandshakeInterceptor())
                 .setAllowedOrigins("*");
     }
